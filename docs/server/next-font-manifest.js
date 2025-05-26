@@ -1,0 +1,1 @@
+self.__NEXT_FONT_MANIFEST='{"pages":{},"app":{"/Users/yathavan/Projects/portfolio/src/app/page":["static/media/a34f9d1faa5f3315-s.p.woff2","static/media/d873d0d7738ce615-s.p.woff2","static/media/036afb91967e20ed-s.p.woff2","static/media/f87010aab7de6b46-s.p.woff2"]},"appUsingSizeAdjust":true,"pagesUsingSizeAdjust":false}';
