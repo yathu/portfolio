@@ -1,0 +1,169 @@
+'use client'
+import React, { useEffect, useRef } from "react";
+import * as Chart from "chart.js";
+import { doto } from "../utils/font";
+
+interface Skill {
+  name: string;
+  level: number;
+}
+
+interface SkillsRadarChartProps {
+  skills?: Skill[];
+  title?: string;
+  className?: string;
+}
+
+const SkillsRadarChart: React.FC<SkillsRadarChartProps> = ({
+  skills,
+  title = "Skills",
+  className = "",
+}) => {
+  const chartRef = useRef<HTMLCanvasElement>(null);
+  const chartInstanceRef = useRef<Chart.Chart | null>(null);
+
+  // Default skills data
+  const defaultSkills: Skill[] = [
+    { name: "JavaScript", level: 90 },
+    { name: "TypeScript", level: 85 },
+    { name: "React", level: 88 },
+    { name: "Next.js", level: 82 },
+    { name: "Node.js", level: 75 },
+    { name: "Python", level: 70 },
+    { name: "CSS/HTML", level: 88 },
+    { name: "Database", level: 65 },
+    { name: "UI/UX Design", level: 60 },
+    { name: "Problem Solving", level: 95 },
+  ];
+
+  const skillsToUse = skills || defaultSkills;
+
+  const chartData = {
+    labels: skillsToUse.map((skill) => skill.name),
+    datasets: [
+      {
+        label: "Skill Level (%)",
+        data: skillsToUse.map((skill) => skill.level),
+        backgroundColor: "#ff2c5520",
+        borderColor: "#ff2c5590",
+        borderWidth: 2,
+        pointBackgroundColor: "#000",
+        pointBorderColor: "#fff",
+        pointHoverBackgroundColor: "#fff",
+        pointHoverBorderColor: "#000",
+        pointRadius: 4,
+        pointHoverRadius: 5,
+      },
+    ],
+  };
+
+  const chartOptions = {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      title: {
+        display: true,
+        text: title,
+        font: {
+          size: 32,
+          weight: "bold" as const,
+          family: "Doto, Doto Fallback",
+        },
+        color: "#1f2937",
+        padding: 0,
+      },
+      legend: {
+        display: false,
+      },
+      tooltip: {
+        callbacks: {
+          label: (context: any) => {
+            return `${context.dataset.label}: ${context.parsed.r}%`;
+          },
+        },
+      },
+    },
+    scales: {
+      r: {
+        beginAtZero: true,
+        min: 0,
+        max: 100,
+        ticks: {
+          stepSize: 20,
+          font: {
+            size: 12,
+          },
+          color: "#6b7280",
+        },
+        grid: {
+          color: "rgba(156, 163, 175, 0.3)",
+        },
+        angleLines: {
+          color: "rgba(156, 163, 175, 0.3)",
+        },
+        pointLabels: {
+          font: {
+            size: 13,
+            weight: "500" as const,
+          },
+          color: "#374151",
+        },
+      },
+    },
+    elements: {
+      line: {
+        tension: 0.2,
+      },
+    },
+    interaction: {
+      intersect: false,
+    },
+  };
+
+  useEffect(() => {
+    if (!chartRef.current) return;
+
+    // Register Chart.js components including RadarController
+    Chart.Chart.register(
+      Chart.RadarController,
+      Chart.RadialLinearScale,
+      Chart.PointElement,
+      Chart.LineElement,
+      Chart.Filler,
+      Chart.Tooltip,
+      Chart.Legend,
+      Chart.Title
+    );
+
+    const ctx = chartRef.current.getContext("2d");
+    if (!ctx) return;
+
+    // Destroy existing chart if it exists
+    if (chartInstanceRef.current) {
+      chartInstanceRef.current.destroy();
+    }
+
+    // Create new chart
+    chartInstanceRef.current = new Chart.Chart(ctx, {
+      type: "radar",
+      data: chartData,
+      options: chartOptions,
+    });
+
+    // Cleanup function
+    return () => {
+      if (chartInstanceRef.current) {
+        chartInstanceRef.current.destroy();
+        chartInstanceRef.current = null;
+      }
+    };
+  }, [skillsToUse, title]);
+
+  return (
+    <div className="relative h-full w-full bg-white">
+      <canvas ref={chartRef}></canvas>
+    </div>
+  );
+};
+
+export default SkillsRadarChart;
