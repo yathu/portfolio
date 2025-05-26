@@ -1,7 +1,6 @@
 'use client'
-import React, { useEffect, useRef } from "react";
 import * as Chart from "chart.js";
-import { doto } from "../utils/font";
+import React, { useEffect, useRef } from "react";
 
 interface Skill {
   name: string;
@@ -11,13 +10,11 @@ interface Skill {
 interface SkillsRadarChartProps {
   skills?: Skill[];
   title?: string;
-  className?: string;
 }
 
 const SkillsRadarChart: React.FC<SkillsRadarChartProps> = ({
   skills,
   title = "Skills",
-  className = "",
 }) => {
   const chartRef = useRef<HTMLCanvasElement>(null);
   const chartInstanceRef = useRef<Chart.Chart | null>(null);
@@ -57,7 +54,7 @@ const SkillsRadarChart: React.FC<SkillsRadarChartProps> = ({
     ],
   };
 
-  const chartOptions = {
+  const chartOptions: Chart.ChartOptions<"radar"> = {
     responsive: true,
     maintainAspectRatio: false,
     plugins: {
@@ -66,7 +63,7 @@ const SkillsRadarChart: React.FC<SkillsRadarChartProps> = ({
         text: title,
         font: {
           size: 32,
-          weight: "bold" as const,
+          weight: 600,
           family: "Doto, Doto Fallback",
         },
         color: "#1f2937",
@@ -77,7 +74,7 @@ const SkillsRadarChart: React.FC<SkillsRadarChartProps> = ({
       },
       tooltip: {
         callbacks: {
-          label: (context: any) => {
+          label: (context: Chart.TooltipItem<"radar">) => {
             return `${context.dataset.label}: ${context.parsed.r}%`;
           },
         },
@@ -104,7 +101,7 @@ const SkillsRadarChart: React.FC<SkillsRadarChartProps> = ({
         pointLabels: {
           font: {
             size: 13,
-            weight: "500" as const,
+            weight: 500,
           },
           color: "#374151",
         },
