@@ -21,17 +21,19 @@ const SkillsRadarChart: React.FC<SkillsRadarChartProps> = ({
 
   // Default skills data
   const defaultSkills: Skill[] = [
-    { name: "JavaScript", level: 90 },
-    { name: "TypeScript", level: 85 },
-    { name: "React", level: 88 },
-    { name: "Next.js", level: 82 },
-    { name: "Node.js", level: 75 },
-    { name: "Python", level: 70 },
-    { name: "CSS/HTML", level: 88 },
-    { name: "Database", level: 65 },
-    { name: "UI/UX Design", level: 60 },
-    { name: "Problem Solving", level: 95 },
-  ];
+  { name: "React Native", level: 90 },
+  { name: "TypeScript", level: 80 },
+  { name: "React", level: 85 },
+  { name: "Flutter", level: 75 },
+  { name: "Next.js", level: 85 },
+  { name: "HTML", level: 95 },
+  { name: "CSS", level: 95 },
+  { name: "Tailwind CSS", level: 90 },
+  { name: "Testing", level: 65 },
+  { name: "Expo", level: 70 },
+  { name: "Bootstrap", level: 99   },
+  { name: "TanStack Query", level: 90 },
+];
 
   const skillsToUse = skills || defaultSkills;
 
@@ -42,13 +44,13 @@ const SkillsRadarChart: React.FC<SkillsRadarChartProps> = ({
         label: "Skill Level (%)",
         data: skillsToUse.map((skill) => skill.level),
         backgroundColor: "#ff2c5520",
-        borderColor: "#ff2c5590",
-        borderWidth: 2,
-        pointBackgroundColor: "#000",
+        borderColor: "#ff2c5590", //f9234cd6
+        borderWidth: 1,
+        pointBackgroundColor: "#f9234cd6",
         pointBorderColor: "#fff",
         pointHoverBackgroundColor: "#fff",
-        pointHoverBorderColor: "#000",
-        pointRadius: 4,
+        pointHoverBorderColor: "#ff002e90",
+        pointRadius: 3.5,
         pointHoverRadius: 5,
       },
     ],
@@ -59,7 +61,7 @@ const SkillsRadarChart: React.FC<SkillsRadarChartProps> = ({
     maintainAspectRatio: false,
     plugins: {
       title: {
-        display: true,
+        display: false,
         text: title,
         font: {
           size: 32,
@@ -157,9 +159,7 @@ const SkillsRadarChart: React.FC<SkillsRadarChartProps> = ({
   }, [skillsToUse, title]);
 
   return (
-    <div className="relative h-full w-full bg-white">
       <canvas ref={chartRef}></canvas>
-    </div>
   );
 };
 
