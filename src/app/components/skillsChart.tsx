@@ -156,7 +156,7 @@ const SkillsRadarChart: React.FC<SkillsRadarChartProps> = ({
         chartInstanceRef.current = null;
       }
     };
-  }, [skillsToUse, title]);
+  }, [chartData, chartOptions]);
 
   return (
       <canvas ref={chartRef}></canvas>

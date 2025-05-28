@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { poiretOne, doto, inter } from "./utils/font";
-import { Download, Github, GithubIcon, Linkedin, Twitter } from "lucide-react";
+import { Download, Github, Linkedin } from "lucide-react";
 import SkillsRadarChart from "./components/skillsChart";
 
 export default function Home() {
