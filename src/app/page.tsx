@@ -43,7 +43,7 @@ export default function Home() {
               </div>
 
               <a
-                href="/Yathavan-Mobile-Dev.pdf"
+                href="./Yathavan-Mobile-Dev.pdf"
                 target="_blank"
                 className={`bg-gray-900 text-white flex justify-center items-center text-base font-semibold px-8 py-2 gap-2 rounded-full ${poiretOne.className}`}>
                 <Download size={18} /> Resume
