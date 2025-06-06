@@ -2,6 +2,7 @@ import Link from "next/link";
 import { poiretOne, doto, inter } from "./utils/font";
 import { Download, Github, Linkedin } from "lucide-react";
 import SkillsRadarChart from "./components/skillsChart";
+import PortfolioGallery from "./components/portfolioGallery";
 
 export default function Home() {
   return (
@@ -76,6 +77,9 @@ export default function Home() {
             </div>
           </div>
         </div>
+      </div>
+      <div className="min-h-svh bg-white rounded-lg">
+        <PortfolioGallery/>
       </div>
     </div>
   );
