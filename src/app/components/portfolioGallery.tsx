@@ -25,7 +25,7 @@ const portfolioData: PortfolioItem[] = [
     id: "1",
     title: "98 Training",
     category: "React Native",
-    image: "/img/cjs.webp",
+    image: "img/cjs.webp",
     description:
       "98 Training brings you an unrivalled, global-industry standard of training that challenges your potential and turns training into an intrinsic part of your well-being.",
     technologies: [
@@ -40,7 +40,7 @@ const portfolioData: PortfolioItem[] = [
     id: "2",
     title: "GEZZIN",
     category: "React Native",
-    image: "/img/gezzin.webp",
+    image: "img/gezzin.webp",
     description:
       "Gezzin is a social platform designed to reconnect and unite families across the globe. Inspired by the meaning of its name—'cousin' in African and 'family' in Dutch—Gezzin helps users build extended family trees, revive lost connections, and promote unity in the digital age.",
     technologies: [
@@ -55,7 +55,7 @@ const portfolioData: PortfolioItem[] = [
     id: "3",
     title: "CJS",
     category: "Frontend",
-    image: "/img/cjs.jpg",
+    image: "img/cjs.jpg",
     description:
       "CJS is a corporate and fashion jewellery brand crafting elegant pieces since 1922, blending timeless style with modern sophistication.",
     technologies: [
@@ -72,7 +72,7 @@ const portfolioData: PortfolioItem[] = [
     id: "4",
     title: "Careems",
     category: "Frontend",
-    image: "/img/Careems.webp",
+    image: "img/Careems.webp",
     description:
       "Careems is a heritage jewellery brand in Sri Lanka, known for fine gemstones and handcrafted pieces since 1890.",
     technologies: [
@@ -147,7 +147,7 @@ export default function PortfolioGallery() {
               <Link target="_blank" href={item.link} className="block">
                 <div className="relative overflow-hidden rounded-2xl bg-[#f2f4f5] aspect-square mb-4">
                   <Image
-                    src={item.image || "/img/placeholder.svg"}
+                    src={item.image || "img/placeholder.svg"}
                     alt={item.title}
                     fill
                     className="object-cover transition-all duration-700 ease-out group-hover:scale-110  group-hover:rotate-6"
