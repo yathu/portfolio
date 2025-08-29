@@ -171,10 +171,8 @@ export default function PortfolioGallery() {
               className="group cursor-pointer">
               <Link target="_blank" href={item.link} className="block">
                 <div className="relative overflow-hidden rounded-2xl bg-[#f2f4f5] aspect-square mb-4">
-                  <Image
-                    width={400}
-                    height={400}
-                    src={`/${item.image}`}
+                  <img
+                    src={`${item.image}`}
                     alt={item.title}
                     className="object-cover transition-all duration-700 ease-out group-hover:scale-110  group-hover:rotate-6"
                   />
