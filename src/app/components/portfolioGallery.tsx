@@ -8,7 +8,7 @@ import { SkillIcon, skillsIcons } from "../utils/skillsIcons";
 import { CircleArrowOutUpRight } from "lucide-react";
 
 const categories = ["All", "React Native", "Flutter", "Frontend"] as const;
-type Category = typeof categories[number];
+type Category = (typeof categories)[number];
 
 interface PortfolioItem {
   id: string;
@@ -85,6 +85,31 @@ const portfolioData: PortfolioItem[] = [
     ],
     link: "https://www.careems.com/",
   },
+  {
+    id: "5",
+    title: "IPOSG",
+    category: "React Native",
+    image: "img/IPOSG@2x.webp",
+    description:
+      "one of the only UK based software development companies, becoming the most trusted EPOS applications provider for both the retail and hospitality sectors.",
+    technologies: [
+      skillsIcons.react,
+      skillsIcons.typescript,
+      skillsIcons.tailwind,
+      skillsIcons.redux,
+    ],
+    link: "https://iposg.com/en-gb/index.html",
+  },
+  {
+    id: "6",
+    title: "Expense Tracker",
+    category: "Flutter",
+    image: "img/Expense tracker@2x.webp",
+    description:
+      "Personal Expense Manager App is the perfect tool for taking control of your finances, it allows you to easily track your expenses and learn your spending habits.",
+    technologies: [skillsIcons.flutter, skillsIcons.sqlite],
+    link: "https://iposg.com/en-gb/index.html",
+  },
 ];
 
 export default function PortfolioGallery() {
@@ -147,9 +172,10 @@ export default function PortfolioGallery() {
               <Link target="_blank" href={item.link} className="block">
                 <div className="relative overflow-hidden rounded-2xl bg-[#f2f4f5] aspect-square mb-4">
                   <Image
-                    src={item.image || "img/placeholder.svg"}
+                    width={400}
+                    height={400}
+                    src={`/${item.image}`}
                     alt={item.title}
-                    fill
                     className="object-cover transition-all duration-700 ease-out group-hover:scale-110  group-hover:rotate-6"
                   />
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-all duration-500" />

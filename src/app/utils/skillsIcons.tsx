@@ -19,6 +19,8 @@ export interface SkillsIcons {
   gulp: SkillIcon;
   jekyll: SkillIcon;
   jquery: SkillIcon;
+  flutter: SkillIcon;
+  sqlite: SkillIcon;
 }
 
 export const skillsIcons: SkillsIcons = {
@@ -81,5 +83,13 @@ export const skillsIcons: SkillsIcons = {
   jquery: {
     name: "jQuery",
     url: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jquery/jquery-original.svg",
+  },
+  flutter: {
+    name: "Flutter",
+    url: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg",
+  },
+  sqlite: {
+    name: "SQLite",
+    url: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sqlite/sqlite-original.svg",
   },
 };
