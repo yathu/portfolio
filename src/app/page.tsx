@@ -90,7 +90,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="bg-black/10 py-4 lg:py-20">
+      <div className="bg-gray-100 py-4 lg:py-20">
               <div className="container mx-auto min-h-svh bg-white rounded-lg">
         <PortfolioGallery />
       </div>
