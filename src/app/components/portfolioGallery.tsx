@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { SkillIcon, skillsIcons } from "../utils/skillsIcons";
 import { CircleArrowOutUpRight } from "lucide-react";
-import { doto, inter } from "../utils/font";
+import { inter } from "../utils/font";
 
 const categories = ["All", "React Native", "Flutter", "Frontend"] as const;
 type Category = (typeof categories)[number];
@@ -224,7 +224,6 @@ export default function PortfolioGallery() {
                           {skills.name}
                         </span>
                       ))}
-
 
                       {/* {item.technologies.map((skills, index) => (
                         <Image
