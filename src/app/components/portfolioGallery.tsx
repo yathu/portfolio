@@ -2,10 +2,10 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import Image from "next/image";
 import Link from "next/link";
 import { SkillIcon, skillsIcons } from "../utils/skillsIcons";
 import { CircleArrowOutUpRight } from "lucide-react";
+import { doto, inter } from "../utils/font";
 
 const categories = ["All", "React Native", "Flutter", "Frontend"] as const;
 type Category = (typeof categories)[number];
@@ -29,6 +29,21 @@ const portfolioData: PortfolioItem[] = [
     description:
       "98 Training brings you an unrivalled, global-industry standard of training that challenges your potential and turns training into an intrinsic part of your well-being.",
     technologies: [
+      skillsIcons.reactNative,
+      skillsIcons.typescript,
+      skillsIcons.tailwind,
+      skillsIcons.redux,
+    ],
+    link: "https://apps.apple.com/us/app/98-training/id6450190457",
+  },
+  {
+    id: "2",
+    title: "Logistics CRM",
+    category: "Frontend",
+    image: "img/OCI.webp",
+    description:
+      "Architected a logistics CRM that uses AI to simplify inquiries, rate comparison, shipment tracking, and appointment management in a single intuitive platform.",
+    technologies: [
       skillsIcons.react,
       skillsIcons.typescript,
       skillsIcons.tailwind,
@@ -44,7 +59,7 @@ const portfolioData: PortfolioItem[] = [
     description:
       "Gezzin is a social platform designed to reconnect and unite families across the globe. Inspired by the meaning of its name—'cousin' in African and 'family' in Dutch—Gezzin helps users build extended family trees, revive lost connections, and promote unity in the digital age.",
     technologies: [
-      skillsIcons.react,
+      skillsIcons.reactNative,
       skillsIcons.typescript,
       skillsIcons.tailwind,
       skillsIcons.redux,
@@ -93,7 +108,7 @@ const portfolioData: PortfolioItem[] = [
     description:
       "one of the only UK based software development companies, becoming the most trusted EPOS applications provider for both the retail and hospitality sectors.",
     technologies: [
-      skillsIcons.react,
+      skillsIcons.reactNative,
       skillsIcons.typescript,
       skillsIcons.tailwind,
       skillsIcons.redux,
@@ -170,7 +185,7 @@ export default function PortfolioGallery() {
               }}
               className="group cursor-pointer">
               <Link target="_blank" href={item.link} className="block">
-                <div className="relative overflow-hidden rounded-2xl bg-[#f2f4f5] aspect-square mb-4">
+                <div className="relative overflow-hidden rounded-2xl bg-[#f2f4f5] aspect-square mb-4 flex items-center justify-center">
                   <img
                     src={`${item.image}`}
                     alt={item.title}
@@ -186,15 +201,32 @@ export default function PortfolioGallery() {
                       </div>
                     </div>
                   </div>
+
+                  {/* <div className="absolute bottom-3 left-3 flex flex-wrap gap-2 flex-shrink-0">
+                    {item.technologies.map((skills) => (
+                        <span key={skills.name} className="bg-white/90 backdrop-blur-sm rounded-full py-2 px-3 text-xs font-medium flex items-center gap-2">
+                          {skills.name}
+                        </span>
+                      ))}
+                  </div> */}
                 </div>
 
                 <div className="space-y-3">
-                  <div className="flex items-start justify-between gap-3">
+                  <div className="flex flex-col justify-between max-w-full gap-3 overflow-hidden">
                     <h3 className="text-lg sm:text-xl font-bold text-gray-900 group-hover:text-gray-700 transition-colors leading-tight">
                       {item.title}
                     </h3>
-                    <div className="flex flex-wrap gap-2 justify-end flex-shrink-0">
-                      {item.technologies.map((skills, index) => (
+                    <div className="flex gap-1 justify-start overflow-x-scroll flex-1">
+                      {item.technologies.map((skills) => (
+                        <span
+                          key={skills.name}
+                          className={`bg-black/80 text-white rounded-full py-1.5 px-2 text-xs font-normal flex items-center gap-2 ${inter.className}`}>
+                          {skills.name}
+                        </span>
+                      ))}
+
+
+                      {/* {item.technologies.map((skills, index) => (
                         <Image
                           key={skills.name + index}
                           src={skills.url}
@@ -202,7 +234,7 @@ export default function PortfolioGallery() {
                           width={20}
                           height={20}
                         />
-                      ))}
+                      ))} */}
                     </div>
                   </div>
 

@@ -7,6 +7,7 @@ export interface SkillsIcons {
   javascript: SkillIcon;
   typescript: SkillIcon;
   react: SkillIcon;
+  reactNative: SkillIcon;
   nodejs: SkillIcon;
   html5: SkillIcon;
   css3: SkillIcon;
@@ -34,6 +35,10 @@ export const skillsIcons: SkillsIcons = {
   },
   react: {
     name: "React",
+    url: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+  },
+  reactNative: {
+    name: "ReactNative",
     url: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
   },
   tailwind: {
