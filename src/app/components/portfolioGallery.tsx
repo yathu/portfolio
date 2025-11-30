@@ -23,6 +23,22 @@ interface PortfolioItem {
 const portfolioData: PortfolioItem[] = [
   {
     id: "1",
+    title: "Mono Focus",
+    category: "React Native",
+    image: "img/monoFocus.png",
+    description:
+      "Mono Focus is a distraction-resistant app built for deep focus. It uses a unique Drag-to-Focus mechanic to enforce single-task flow, rewarding consistency with calming, ambient progress visualization.",
+    technologies: [
+      skillsIcons.reactNative,
+      skillsIcons.typescript,
+      skillsIcons.Reanimated,
+      skillsIcons.Zustand,
+      skillsIcons.tailwind,
+    ],
+    link: "#",
+  },
+  {
+    id: "1",
     title: "98 Training",
     category: "React Native",
     image: "img/cjs.webp",
@@ -211,21 +227,29 @@ export default function PortfolioGallery() {
                   </div> */}
                 </div>
 
-                <div className="space-y-3">
-                  <div className="flex flex-col justify-between max-w-full gap-3 overflow-hidden">
+                <div className="space-y-1">
+                  <div className="flex flex-col justify-between max-w-full gap-1 overflow-hidden">
                     <h3 className="text-lg sm:text-xl font-bold text-gray-900 group-hover:text-gray-700 transition-colors leading-tight">
                       {item.title}
                     </h3>
-                    <div className="flex gap-1 justify-start overflow-x-scroll flex-1">
-                      {item.technologies.map((skills) => (
-                        <span
-                          key={skills.name}
-                          className={`bg-black/80 text-white rounded-full py-1.5 px-2 text-xs font-normal flex items-center gap-2 ${inter.className}`}>
-                          {skills.name}
-                        </span>
-                      ))}
+                    {/* Fixed height description container */}
+                    <div className="h-10 sm:h-12">
+                      <p className="text-gray-600 text-sm leading-5 line-clamp-2">
+                        {item.description}
+                      </p>
+                    </div>
+                  </div>
 
-                      {/* {item.technologies.map((skills, index) => (
+                  <div className="flex gap-1 justify-start overflow-x-scroll flex-1">
+                    {item.technologies.map((skills) => (
+                      <span
+                        key={skills.name}
+                        className={`bg-black/80 text-white rounded-full py-1.5 px-2 text-xs font-normal flex items-center gap-2 ${inter.className}`}>
+                        {skills.name}
+                      </span>
+                    ))}
+
+                    {/* {item.technologies.map((skills, index) => (
                         <Image
                           key={skills.name + index}
                           src={skills.url}
@@ -234,14 +258,6 @@ export default function PortfolioGallery() {
                           height={20}
                         />
                       ))} */}
-                    </div>
-                  </div>
-
-                  {/* Fixed height description container */}
-                  <div className="h-10 sm:h-12">
-                    <p className="text-gray-600 text-sm leading-5 line-clamp-2">
-                      {item.description}
-                    </p>
                   </div>
                 </div>
               </Link>

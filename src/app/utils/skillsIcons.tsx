@@ -22,6 +22,8 @@ export interface SkillsIcons {
   jquery: SkillIcon;
   flutter: SkillIcon;
   sqlite: SkillIcon;
+  Reanimated: SkillIcon;
+  Zustand: SkillIcon;
 }
 
 export const skillsIcons: SkillsIcons = {
@@ -96,5 +98,13 @@ export const skillsIcons: SkillsIcons = {
   sqlite: {
     name: "SQLite",
     url: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sqlite/sqlite-original.svg",
+  },
+  Reanimated: {
+    name: "Reanimated",
+    url: "https://docs.swmansion.com/react-native-reanimated/img/logo-hero.svg",
+  },
+  Zustand: {
+    name: "Zustand",
+    url: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/zustand/zustand-original.svg",
   },
 };
