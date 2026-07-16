@@ -9,8 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@gsap/react": "^2.1.2",
     "chart.js": "^4.4.9",
     "framer-motion": "^12.15.0",
+    "gsap": "^3.14.2",
     "lucide-react": "^0.511.0",
     "next": "15.3.2",
     "react": "^19.0.0",

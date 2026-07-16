@@ -24,6 +24,7 @@ export interface SkillsIcons {
   sqlite: SkillIcon;
   Reanimated: SkillIcon;
   Zustand: SkillIcon;
+  Expo: SkillIcon;
 }
 
 export const skillsIcons: SkillsIcons = {
@@ -106,5 +107,9 @@ export const skillsIcons: SkillsIcons = {
   Zustand: {
     name: "Zustand",
     url: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/zustand/zustand-original.svg",
+  },
+    Expo: {
+    name: "Zustand",
+    url: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/expo/expo-original.svg",
   },
 };

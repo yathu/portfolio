@@ -11,7 +11,7 @@ const categories = ["All", "React Native", "Flutter", "Frontend"] as const;
 type Category = (typeof categories)[number];
 
 interface PortfolioItem {
-  id: string;
+
   title: string;
   category: Category;
   image: string;
@@ -20,9 +20,22 @@ interface PortfolioItem {
   link: string;
 }
 
-const portfolioData: PortfolioItem[] = [
+const rawPortfolioData: PortfolioItem[] = [
+    {
+    title: "Lanka Property Web",
+    category: "React Native",
+    image: "img/lpw-agent.webp",
+    description:
+      "LankaPropertyWeb is Sri Lanka's number one and most visited real estate listing website",
+    technologies: [
+      skillsIcons.reactNative,
+      skillsIcons.Expo,
+      skillsIcons.Reanimated,
+      skillsIcons.tailwind,
+    ],
+    link: "#",
+  },
   {
-    id: "1",
     title: "Mono Focus",
     category: "React Native",
     image: "img/monoFocus.png",
@@ -38,7 +51,6 @@ const portfolioData: PortfolioItem[] = [
     link: "#",
   },
   {
-    id: "1",
     title: "98 Training",
     category: "React Native",
     image: "img/cjs.webp",
@@ -53,7 +65,6 @@ const portfolioData: PortfolioItem[] = [
     link: "https://apps.apple.com/us/app/98-training/id6450190457",
   },
   {
-    id: "2",
     title: "Logistics CRM",
     category: "Frontend",
     image: "img/OCI.webp",
@@ -68,7 +79,6 @@ const portfolioData: PortfolioItem[] = [
     link: "https://apps.apple.com/us/app/98-training/id6450190457",
   },
   {
-    id: "2",
     title: "GEZZIN",
     category: "React Native",
     image: "img/gezzin.webp",
@@ -83,7 +93,6 @@ const portfolioData: PortfolioItem[] = [
     link: "https://apps.apple.com/us/app/gezzin/id1555230533",
   },
   {
-    id: "3",
     title: "CJS",
     category: "Frontend",
     image: "img/cjs.jpg",
@@ -100,7 +109,6 @@ const portfolioData: PortfolioItem[] = [
     link: "https://cjs.lk/",
   },
   {
-    id: "4",
     title: "Careems",
     category: "Frontend",
     image: "img/Careems.webp",
@@ -117,7 +125,6 @@ const portfolioData: PortfolioItem[] = [
     link: "https://www.careems.com/",
   },
   {
-    id: "5",
     title: "IPOSG",
     category: "React Native",
     image: "img/IPOSG@2x.webp",
@@ -132,7 +139,6 @@ const portfolioData: PortfolioItem[] = [
     link: "https://iposg.com/en-gb/index.html",
   },
   {
-    id: "6",
     title: "Expense Tracker",
     category: "Flutter",
     image: "img/Expense tracker@2x.webp",
@@ -142,6 +148,11 @@ const portfolioData: PortfolioItem[] = [
     link: "https://iposg.com/en-gb/index.html",
   },
 ];
+
+const portfolioData: PortfolioItem[] = rawPortfolioData.map((item, index) => ({
+  id: String(index + 1),
+  ...item,
+}));
 
 export default function PortfolioGallery() {
   const [activeCategory, setActiveCategory] = useState("All");
@@ -190,7 +201,7 @@ export default function PortfolioGallery() {
         <AnimatePresence mode="wait">
           {filteredItems.map((item) => (
             <motion.div
-              key={item.id}
+              key={item.title}
               layout
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -240,7 +251,7 @@ export default function PortfolioGallery() {
                     </div>
                   </div>
 
-                  <div className="flex gap-1 justify-start overflow-x-scroll flex-1">
+                  {/* <div className="flex gap-1 justify-start overflow-x-scroll flex-1">
                     {item.technologies.map((skills) => (
                       <span
                         key={skills.name}
@@ -249,7 +260,7 @@ export default function PortfolioGallery() {
                       </span>
                     ))}
 
-                    {/* {item.technologies.map((skills, index) => (
+                    {item.technologies.map((skills, index) => (
                         <Image
                           key={skills.name + index}
                           src={skills.url}
@@ -257,8 +268,8 @@ export default function PortfolioGallery() {
                           width={20}
                           height={20}
                         />
-                      ))} */}
-                  </div>
+                      ))}
+                  </div> */}
                 </div>
               </Link>
             </motion.div>
