@@ -91,11 +91,10 @@ export default function Home() {
       </div>
 
       <div className="bg-gray-100 py-4 lg:py-20">
-              <div className="container mx-auto min-h-svh bg-white rounded-lg">
-        <PortfolioGallery />
+        <div className="container mx-auto min-h-svh bg-white rounded-lg">
+          <PortfolioGallery />
+        </div>
       </div>
-      </div>
-
     </div>
   );
 }
