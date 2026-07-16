@@ -35,92 +35,92 @@ const SkillsRadarChart: React.FC<SkillsRadarChartProps> = ({
   { name: "TanStack Query", level: 90 },
 ];
 
-  const skillsToUse = skills || defaultSkills;
-
-  const chartData = {
-    labels: skillsToUse.map((skill) => skill.name),
-    datasets: [
-      {
-        label: "Skill Level (%)",
-        data: skillsToUse.map((skill) => skill.level),
-        backgroundColor: "#ff2c5520",
-        borderColor: "#ff2c5590", //f9234cd6
-        borderWidth: 1,
-        pointBackgroundColor: "#f9234cd6",
-        pointBorderColor: "#fff",
-        pointHoverBackgroundColor: "#fff",
-        pointHoverBorderColor: "#ff002e90",
-        pointRadius: 3.5,
-        pointHoverRadius: 5,
-      },
-    ],
-  };
-
-  const chartOptions: Chart.ChartOptions<"radar"> = {
-    responsive: true,
-    maintainAspectRatio: false,
-    plugins: {
-      title: {
-        display: false,
-        text: title,
-        font: {
-          size: 32,
-          weight: 600,
-          family: "Doto, Doto Fallback",
-        },
-        color: "#1f2937",
-        padding: 0,
-      },
-      legend: {
-        display: false,
-      },
-      tooltip: {
-        callbacks: {
-          label: (context: Chart.TooltipItem<"radar">) => {
-            return `${context.dataset.label}: ${context.parsed.r}%`;
-          },
-        },
-      },
-    },
-    scales: {
-      r: {
-        beginAtZero: true,
-        min: 0,
-        max: 100,
-        ticks: {
-          stepSize: 20,
-          font: {
-            size: 12,
-          },
-          color: "#6b7280",
-        },
-        grid: {
-          color: "rgba(156, 163, 175, 0.3)",
-        },
-        angleLines: {
-          color: "rgba(156, 163, 175, 0.3)",
-        },
-        pointLabels: {
-          font: {
-            size: 13,
-            weight: 500,
-          },
-          color: "#374151",
-        },
-      },
-    },
-    elements: {
-      line: {
-        tension: 0.2,
-      },
-    },
-    interaction: {
-      intersect: false,
-    },
-  };
-
   useEffect(() => {
     if (!chartRef.current) return;
+
+    const skillsToUse = skills || defaultSkills;
+
+    const chartData = {
+      labels: skillsToUse.map((skill) => skill.name),
+      datasets: [
+        {
+          label: "Skill Level (%)",
+          data: skillsToUse.map((skill) => skill.level),
+          backgroundColor: "#ff2c5520",
+          borderColor: "#ff2c5590", //f9234cd6
+          borderWidth: 1,
+          pointBackgroundColor: "#f9234cd6",
+          pointBorderColor: "#fff",
+          pointHoverBackgroundColor: "#fff",
+          pointHoverBorderColor: "#ff002e90",
+          pointRadius: 3.5,
+          pointHoverRadius: 5,
+        },
+      ],
+    };
+
+    const chartOptions: Chart.ChartOptions<"radar"> = {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        title: {
+          display: false,
+          text: title,
+          font: {
+            size: 32,
+            weight: 600,
+            family: "Doto, Doto Fallback",
+          },
+          color: "#1f2937",
+          padding: 0,
+        },
+        legend: {
+          display: false,
+        },
+        tooltip: {
+          callbacks: {
+            label: (context: Chart.TooltipItem<"radar">) => {
+              return `${context.dataset.label}: ${context.parsed.r}%`;
+            },
+          },
+        },
+      },
+      scales: {
+        r: {
+          beginAtZero: true,
+          min: 0,
+          max: 100,
+          ticks: {
+            stepSize: 20,
+            font: {
+              size: 12,
+            },
+            color: "#6b7280",
+          },
+          grid: {
+            color: "rgba(156, 163, 175, 0.3)",
+          },
+          angleLines: {
+            color: "rgba(156, 163, 175, 0.3)",
+          },
+          pointLabels: {
+            font: {
+              size: 13,
+              weight: 500,
+            },
+            color: "#374151",
+          },
+        },
+      },
+      elements: {
+        line: {
+          tension: 0.2,
+        },
+      },
+      interaction: {
+        intersect: false,
+      },
+    };
 
     // Register Chart.js components including RadarController
     Chart.Chart.register(
@@ -156,7 +156,8 @@ const SkillsRadarChart: React.FC<SkillsRadarChartProps> = ({
         chartInstanceRef.current = null;
       }
     };
-  }, [chartData, chartOptions]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [skills, title]);
 
   return (
       <canvas ref={chartRef}></canvas>
