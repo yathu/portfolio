@@ -5,7 +5,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { SkillIcon, skillsIcons } from "../utils/skillsIcons";
 import { CircleArrowOutUpRight } from "lucide-react";
-import { inter } from "../utils/font";
 
 const categories = ["All", "React Native", "Flutter", "Frontend"] as const;
 type Category = (typeof categories)[number];
